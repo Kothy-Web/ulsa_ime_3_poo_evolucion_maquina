@@ -5,9 +5,6 @@
 
 #include <vector>
 
-// Coordina las maquinas de la linea.
-// Las maquinas existen fuera de la linea.
-// La linea solamente las conoce y no las destruye.
 class ControlDeLinea {
 private:
     std::vector<Maquina*> maquinas;
