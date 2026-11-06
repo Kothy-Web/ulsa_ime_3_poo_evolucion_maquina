@@ -5,7 +5,7 @@
 
 class Torno : public Maquina {
 public:
-    Torno(const std::string& nombre);
+    explicit Torno(const std::string& nombre);
 
     void procesar();
 };

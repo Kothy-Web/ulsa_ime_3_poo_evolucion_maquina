@@ -2,11 +2,13 @@
 
 #include <iostream>
 
-Torno::Torno(const std::string& nombre) : Maquina(nombre) {}
+Torno::Torno(const std::string& nombre)
+    : Maquina(nombre) {
+}
 
 void Torno::procesar() {
-    std::cout << nombre << ": torneando pieza\n";
+    std::cout << getNombre() << ": torneando pieza\n";
 
-    piezasProcesadas++;
-    tiempoTrabajadoSeg += 45;
+    registrarPieza();
+    agregarTiempo(45);
 }
