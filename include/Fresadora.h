@@ -7,7 +7,8 @@ class Fresadora : public Maquina {
 public:
     explicit Fresadora(const std::string& nombre);
 
-    void procesar();
+    void procesar() override;
+    int tiempoCicloSeg() const override;
 };
 
 #endif

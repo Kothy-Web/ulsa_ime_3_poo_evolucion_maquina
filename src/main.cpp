@@ -11,6 +11,19 @@ void ejecutarTurno(Maquina& m, int ciclos) {
     }
 }
 
+#include "Fresadora.h"
+#include "Maquina.h"
+#include "Torno.h"
+
+#include <iostream>
+
+// Ejecuta varios ciclos de cualquier maquina de la planta.
+void ejecutarTurno(Maquina& m, int ciclos) {
+    for (int i = 0; i < ciclos; i++) {
+        m.procesar();
+    }
+}
+
 int main() {
     Torno torno("Torno T-01");
     Fresadora fresadora("Fresadora F-01");
