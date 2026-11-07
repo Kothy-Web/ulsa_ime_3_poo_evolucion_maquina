@@ -3,28 +3,41 @@
 
 #include <string>
 
+// Clase base abstracta de todas las maquinas de la planta.
+//
+// CONTRATO para toda clase derivada:
+// 1. ejecutarCiclo() realiza el trabajo fisico de UN ciclo.
+// 2. tiempoCicloSeg() devuelve los segundos de un ciclo;
+//    siempre debe ser mayor que cero.
+//
+// La clase base registra las piezas y el tiempo de cada ciclo,
+// y verifica que el tiempo sea valido.
+
 class Maquina {
 private:
     std::string nombre;
     int piezasProcesadas;
     int tiempoTrabajadoSeg;
 
-protected:
     void registrarPieza();
     void agregarTiempo(int segundos);
+    int tiempoCicloValidado() const;
+
+    // Lo que cada maquina hace en un ciclo.
+    // Solo la clase base lo llama.
+    virtual void ejecutarCiclo() = 0;
 
 public:
     explicit Maquina(const std::string& nombre);
 
     virtual ~Maquina() = default;
-// CONTRATO de procesar(): cada llamada procesa exactamente UNA pieza.
-    // Toda clase derivada debe llamar una vez a registrarPieza() y una vez
-    // a agregarTiempo(tiempoCicloSeg()).
 
-    virtual void procesar() = 0;
+    // Procesa exactamente una pieza.
+    // No es virtual: ninguna derivada puede cambiar las reglas.
+    void procesar();
+
     virtual int tiempoCicloSeg() const = 0;
- // CONTRATO de tiempoCicloSeg(): devuelve los segundos que tarda un
-    // ciclo. Siempre es mayor que cero.
+
     double capacidadPorHora() const;
 
     const std::string& getNombre() const;

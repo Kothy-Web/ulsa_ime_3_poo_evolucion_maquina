@@ -29,8 +29,29 @@ void Maquina::agregarTiempo(int segundos) {
     tiempoTrabajadoSeg += segundos;
 }
 
+int Maquina::tiempoCicloValidado() const {
+    int segundos = tiempoCicloSeg();
+
+    if (segundos <= 0) {
+        throw std::logic_error(
+            nombre + ": tiempoCicloSeg() debe ser mayor que cero"
+        );
+    }
+
+    return segundos;
+}
+
+void Maquina::procesar() {
+    int segundos = tiempoCicloValidado();
+
+    ejecutarCiclo();
+
+    registrarPieza();
+    agregarTiempo(segundos);
+}
+
 double Maquina::capacidadPorHora() const {
-    return 3600.0 / tiempoCicloSeg();
+    return 3600.0 / tiempoCicloValidado();
 }
 
 const std::string& Maquina::getNombre() const {
@@ -46,7 +67,8 @@ int Maquina::getTiempoTrabajadoSeg() const {
 }
 
 void Maquina::mostrarEstado() const {
-    std::cout << nombre << " | piezas: " << piezasProcesadas
+    std::cout << nombre
+              << " | piezas: " << piezasProcesadas
               << " | tiempo: " << tiempoTrabajadoSeg
               << " s | capacidad: " << capacidadPorHora()
               << " pzas/h\n";
