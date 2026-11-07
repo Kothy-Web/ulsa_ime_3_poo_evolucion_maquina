@@ -2,8 +2,13 @@
 
 #include <iostream>
 
-BandaTransportadora::BandaTransportadora(const std::string& nombre)
-    : Maquina(nombre), motor(1800.0) {
+namespace planta {
+
+BandaTransportadora::BandaTransportadora(
+    const std::string& nombre
+)
+    : Maquina(nombre),
+      motor(1800.0) {
 }
 
 void BandaTransportadora::ejecutarCiclo() {
@@ -18,3 +23,5 @@ void BandaTransportadora::ejecutarCiclo() {
 int BandaTransportadora::tiempoCicloSeg() const {
     return 20;
 }
+
+} // namespace planta

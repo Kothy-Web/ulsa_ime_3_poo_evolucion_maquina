@@ -2,23 +2,27 @@
 
 #include <stdexcept>
 
+namespace planta {
+
 Motor::Motor(double velocidadMaxRpm)
     : velocidadMaxRpm(velocidadMaxRpm),
       velocidadActualRpm(0.0) {
 
-    if (velocidadMaxRpm <= 0) {
+    if (velocidadMaxRpm <= 0.0) {
         throw std::invalid_argument(
-            "La velocidad maxima del motor debe ser mayor que cero"
+            "La velocidad maxima del motor debe ser positiva"
         );
     }
 }
 
 void Motor::fijarVelocidad(double rpm) {
-    if (rpm < 0) {
-        velocidadActualRpm = 0;
-    } else if (rpm > velocidadMaxRpm) {
+    if (rpm < 0.0) {
+        velocidadActualRpm = 0.0;
+    }
+    else if (rpm > velocidadMaxRpm) {
         velocidadActualRpm = velocidadMaxRpm;
-    } else {
+    }
+    else {
         velocidadActualRpm = rpm;
     }
 }
@@ -26,3 +30,5 @@ void Motor::fijarVelocidad(double rpm) {
 double Motor::getVelocidad() const {
     return velocidadActualRpm;
 }
+
+} // namespace planta

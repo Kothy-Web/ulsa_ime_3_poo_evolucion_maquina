@@ -161,19 +161,19 @@ b) La relación entre `BandaTransportadora` y `Motor`, ¿es composición o agreg
 
 a) Después de agregar la `Cortadora`, ¿qué archivos mostró `git status`? ¿Cuántos archivos de la librería tuviste que modificar?
 
-[Inserta aquí tu respuesta]
+[Git mostró como modificados únicamente src/main.cpp y como archivos nuevos include/Cortadora.h y src/Cortadora.cpp. No fue necesario modificar ninguno de los archivos de la biblioteca, por lo que pude agregar una máquina nueva sin cambiar las ocho clases originales.]
 
 b) ¿Qué pasó al escribir `-lplanta` antes de `src/main.cpp`? ¿Por qué?
 
-[Inserta aquí tu respuesta]
+[Al colocar -lplanta antes de src/main.cpp, aparecieron errores de tipo undefined reference, porque el enlazador trabaja de izquierda a derecha y todavía no había encontrado las referencias a las funciones que necesitaba resolver. Al colocar la biblioteca después de main.cpp, el programa pudo enlazarse correctamente.]
 
 **3.10 Bitácora de dudas**
 
 | # | Etapa | Duda | Cómo la resolví | Fuente |
 | --- | --- | --- | --- | --- |
-| 1 | _____ | _____ | _____ | _____ |
-| 2 | _____ | _____ | _____ | _____ |
-| 3 | _____ | _____ | _____ | _____ |
+| 1 | _____ | El compilador no encontraba BandaTransportadora.h. | Revisé la ubicación del archivo y lo coloqué correctamente dentro de la carpeta include. Después compilé utilizando -Iinclude. | PRACTICA.md y apuntes de clase |
+| 2 | _____ | ¿Cómo utilizar las clases después de introducir namespace planta? | Aprendí que debía escribir planta:: antes del nombre de cada clase cuando las utilizaba desde main.cpp. | PRACTICA.md y apuntes de C++ |
+| 3 | _____ | ¿Por qué aparecía undefined reference al colocar la biblioteca antes de main.cpp? | Comprendí que el enlazador trabaja de izquierda a derecha, por lo que la biblioteca debe colocarse después del código que utiliza sus funciones. | PRACTICA.md y apuntes de clase |
 
 ## Fase 4. Probar y mejorar
 

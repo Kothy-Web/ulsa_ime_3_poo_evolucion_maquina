@@ -3,6 +3,8 @@
 #include <iostream>
 #include <stdexcept>
 
+namespace planta {
+
 Maquina::Maquina(const std::string& nombre)
     : nombre(nombre),
       piezasProcesadas(0),
@@ -69,7 +71,9 @@ int Maquina::getTiempoTrabajadoSeg() const {
 void Maquina::mostrarEstado() const {
     std::cout << nombre
               << " | piezas: " << piezasProcesadas
-              << " | tiempo: " << tiempoTrabajadoSeg
-              << " s | capacidad: " << capacidadPorHora()
+              << " | tiempo: " << tiempoTrabajadoSeg << " s"
+              << " | capacidad: " << capacidadPorHora()
               << " pzas/h\n";
 }
+
+} // namespace planta

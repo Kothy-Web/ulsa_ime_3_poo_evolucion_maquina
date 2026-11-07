@@ -5,14 +5,24 @@
 
 #include <vector>
 
+namespace planta {
+
+// Coordina las maquinas de la linea.
+// Las maquinas existen fuera de la linea: solo las conoce
+// y nunca las destruye.
+
 class ControlDeLinea {
 private:
     std::vector<Maquina*> maquinas;
 
 public:
     bool agregar(Maquina* maquina);
+
     void ejecutarTurno(int ciclos);
+
     void imprimirReporte() const;
 };
+
+} // namespace planta
 
 #endif
